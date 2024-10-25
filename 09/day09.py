@@ -1,3 +1,5 @@
+# Blind auction project
+
 import art
 print(art.logo)
 
