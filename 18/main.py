@@ -44,7 +44,5 @@ for row in range(num_dots):
         tim.forward(50)
 
 
-
-
 screen = t.Screen()
 screen.exitonclick()
