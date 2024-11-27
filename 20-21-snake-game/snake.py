@@ -1,5 +1,5 @@
 from turtle import Turtle
-X_POSITION_START = [0, -20, -40]  # or: STARTING_POSITIONS = [(0, 0), (0, -20), (0, -40)]
+STARTING_POSITIONS = [(0, 0), (0, -20), (0, -40)]
 MOVE_FORWARD = 15
 UP = 90
 DOWN = 270
@@ -14,12 +14,19 @@ class Snake:
         self.snake_head = self.segments[0]
 
     def create_snake(self): # toda a vez que for criado um objeto, essa função será executada
-        for snake_segment in range(3):
-            new_segment = Turtle(shape="square")
-            new_segment.color("white")
-            new_segment.penup()
-            new_segment.goto(x=X_POSITION_START[snake_segment],y=0)
-            self.segments.append(new_segment)
+        for position in STARTING_POSITIONS:
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        new_segment = Turtle(shape="square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def snake_extend(self):
+        # adiciona um novo segmento à cobra
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         for seg_num in range(len(self.segments) -1, 0, -1): # inicia pelo último segmento da cobra e vai até o índice 1 (não inclui o 0)

@@ -44,8 +44,8 @@ while game_on:
     # detectar colisão com o prórpio rabo
     # se a cabeça colidir com qualquer segmento do rabo:
         # chamar game_over()
-    for segment in snake.segments:
-        if snake.snake_head.segment[1:10]:
+    for segment in snake.segments[1:]:
+        if snake.snake_head.distance(segment) < 10:
             game_on = False
             scoreboard.game_over()
 
