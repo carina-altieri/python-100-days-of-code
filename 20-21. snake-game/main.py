@@ -33,20 +33,19 @@ while game_on:
     # detectar colisão com comidas usando o método distance para comparar a distância entre a cabeça da snake (primeiro segmento) e food
     if snake.snake_head.distance(food) < 15: # 15 pixels, considerando que a dimensão de food é 10x10
         food.refresh()
-        snake.extend()
+        snake.snake_extend()
         scoreboard.increase_score()
 
     # detectar colisão com parede:
     if snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -280 or snake.snake_head.ycor() > 280 or snake.snake_head.ycor() < -280:
-        game_on = False 
-        scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
 
     # detectar colisão com o prórpio rabo
-    # se a cabeça colidir com qualquer segmento do rabo:
-        # chamar game_over()
     for segment in snake.segments[1:]:
         if snake.snake_head.distance(segment) < 10:
-            game_on = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
+
 
 screen.exitonclick()

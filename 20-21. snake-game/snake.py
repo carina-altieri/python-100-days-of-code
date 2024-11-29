@@ -24,6 +24,14 @@ class Snake:
         new_segment.goto(position)
         self.segments.append(new_segment)
 
+    # resetar snake - todos os segmentos serão deletados e recriados
+    def reset(self): 
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.snake_head = self.segments[0]
+
     def snake_extend(self):
         # adiciona um novo segmento à cobra
         self.add_segment(self.segments[-1].position())
