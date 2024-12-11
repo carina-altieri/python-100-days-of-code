@@ -24,12 +24,15 @@ states = data.state.to_list()
 while len(guessed_states) < 50:
     # adicionando pop up como input
     answer_state = screen.textinput(f"{len(guessed_states)}/50 states correct", prompt="Guess a state name:").title() # title Case
+    
+    
     if answer_state == "Exit":
-        not_guessed_states = []
-        # criando novo dataframe contendo apenas os estados que não foram adivinhados
-        for state in states:
-            if state not in guessed_states:
-                not_guessed_states.append(state)
+        not_guessed_states = [state for state in states if state not in guessed_states]
+        #not_guessed_states = []
+        #criando novo dataframe contendo apenas os estados que não foram adivinhados
+        #for state in states:
+        #    if state not in guessed_states:
+        #    not_guessed_states.append(state)'''
         df = pandas.DataFrame(not_guessed_states)
         df.to_csv("missing_states.csv")
         break
@@ -44,8 +47,6 @@ while len(guessed_states) < 50:
 
 # alternativa ao exitonclick() - mantém a tela aberta mesmo com o clique
 screen.mainloop()
-
-
 
 
 # código para encontrar as coordenadas do mouse em uma tela:
