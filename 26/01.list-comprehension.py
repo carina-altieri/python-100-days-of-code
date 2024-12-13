@@ -7,7 +7,7 @@
 
 # com list comprehension:
 # numbers = [1,2,3]
-# new_list = [n + 1 for n in numbers]]
+# new_list = [n + 1 for n in numbers]
 # [new_item for item in list]
 
 numbers = [1,2,3]
